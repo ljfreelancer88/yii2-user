@@ -10,6 +10,7 @@
  */
 
 use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
 /**
  * @var yii\web\View $this
@@ -33,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= Html::encode($this->title) ?>
             </div>
             <div class="panel-body">
-                <?php $form = \yii\widgets\ActiveForm::begin([
+                <?php $form = ActiveForm::begin([
                     'id' => 'profile-form',
                     'options' => ['class' => 'form-horizontal'],
                     'fieldConfig' => [
@@ -55,17 +56,17 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'timezone')->dropDownList(\yii\helpers\ArrayHelper::map(\dektrium\user\helpers\Timezone::getAll(), 'timezone', 'name')); ?>
 
-                <?= $form->field($model, 'gravatar_email')->hint(\yii\helpers\Html::a(Yii::t('user', 'Change your avatar at Gravatar.com'), 'http://gravatar.com')) ?>
+                <?= $form->field($model, 'gravatar_email')->hint(Html::a(Yii::t('user', 'Change your avatar at Gravatar.com'), 'http://gravatar.com')) ?>
 
                 <?= $form->field($model, 'bio')->textarea() ?>
 
                 <div class="form-group">
                     <div class="col-lg-offset-3 col-lg-9">
-                        <?= \yii\helpers\Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn btn-block btn-success']) ?><br>
+                        <?= Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn btn-block btn-success']) ?><br>
                     </div>
                 </div>
 
-                <?php \yii\widgets\ActiveForm::end(); ?>
+                <?php ActiveForm::end(); ?>
             </div>
         </div>
     </div>
